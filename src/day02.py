@@ -25,10 +25,10 @@ def part2(input: str) -> str:
 
     strings = input.splitlines()
     for i1 in range(len(strings)):
-        for i2 in range(i1+1, len(strings)):
+        for i2 in range(i1 + 1, len(strings)):
             i = similar(strings[i1], strings[i2])
             if i != -1:
-                return strings[i1][:i] + strings[i1][i+1:]
+                return strings[i1][:i] + strings[i1][i + 1 :]
 
     return ""
 

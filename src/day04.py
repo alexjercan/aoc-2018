@@ -15,7 +15,7 @@ class NightEntry:
         self.minutes = [0 for _ in range(60)]
         for i in range(0, len(self.timestamps), 2):
             start = self.timestamps[i][0]
-            end = self.timestamps[i+1][0]
+            end = self.timestamps[i + 1][0]
             for j in range(start.minute, end.minute):
                 self.minutes[j] += 1
 
@@ -27,14 +27,14 @@ def parse_input(input: str):
         return int(re.findall(r".*#(\d+).*", entry)[0])
 
     def to_date_entry(entry: str):
-        date_time_obj = datetime.strptime(entry, '%Y-%m-%d %H:%M')
+        date_time_obj = datetime.strptime(entry, "%Y-%m-%d %H:%M")
         return date_time_obj
 
     expr = r"^\[(.*?)\]\W+(.*?)$"
-    entries = list(map(lambda line: re.findall(
-        expr, line)[0], input.splitlines()))
+    entries = list(map(lambda line: re.findall(expr, line)[0], input.splitlines()))
     entries = list(
-        map(lambda tup: (to_date_entry(tup[0]), parse_entry(tup[1])), entries))
+        map(lambda tup: (to_date_entry(tup[0]), parse_entry(tup[1])), entries)
+    )
     entries = sorted(entries, key=lambda tup: tup[0])
 
     gid = None
